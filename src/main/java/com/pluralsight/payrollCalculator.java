@@ -20,7 +20,18 @@ public class payrollCalculator {
         double payRate = input.nextDouble();
         input.nextLine();
 
-        System.out.printf("Name: %s%nGross Pay: %.2f%n", name, (hoursWorked * payRate));
+        double totalPay = 0;
+        if (hoursWorked > 40){
+            double overTime = hoursWorked - 40;
+            double overTimePay = payRate * 1.5;
+            totalPay = 40 * payRate;
+            totalPay += overTimePay * overTime;
+        } else {
+            totalPay = hoursWorked * payRate;
+        }
+
+
+        System.out.printf("Name: %s%nGross Pay: %.2f%n", name, totalPay);
 
 
     }
